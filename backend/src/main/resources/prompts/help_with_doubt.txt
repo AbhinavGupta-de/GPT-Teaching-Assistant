@@ -1,0 +1,5 @@
+I am having trouble solving a Data Structures and Algorithms problem.
+This is the question: {question}
+Please don't provide me with solution whatever happens, help me build the intution and approach to solve this problem.
+I am not looking for a solution but a way to think about the problem.
+You can help me with more examples I think that would be more helpful.
