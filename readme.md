@@ -18,7 +18,8 @@ This project is a chat application that acts as a teaching assistant for data st
 
 1. Navigate to the backend directory: `cd backend`
 2. Build the project: `./mvnw clean install`
-3. Run the application: `./mvnw spring-boot:run`
+3. Also, add your Open AI API key in the environment variables before running the project!
+4. Run the application: `./mvnw spring-boot:run`
 
 ## Architecture Explanation
 
