@@ -114,3 +114,9 @@ The GPT Teaching Assistant uses a carefully crafted prompt to help users with Da
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin feature-name`
 5. Open a pull request.
+
+## Example Usage
+
+<!-- add image -->
+
+![HomePage](/assets/home.png)
