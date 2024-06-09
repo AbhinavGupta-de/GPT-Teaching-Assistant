@@ -21,7 +21,10 @@ async function fetchResponse(question: string): Promise<string> {
 		return data;
 	} catch (error) {
 		console.error('Error:', error);
-		throw error;
+		return {
+			answer:
+				'There was an error while fetching the data. Please try again later...',
+		};
 	}
 }
 

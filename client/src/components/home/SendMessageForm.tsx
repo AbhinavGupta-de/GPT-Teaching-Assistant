@@ -26,15 +26,16 @@ const SendMessageForm = ({
 	};
 
 	return (
-		<div className="flex">
+		<div className="flex justify-center items-center mt-10 w-full p-2">
 			<input
 				className="w-4/5 p-2 rounded-l-lg text-black"
 				type="text"
 				value={message}
 				onChange={(e) => setMessage(e.target.value)}
+				placeholder="Type your query here..."
 			/>
 			<button
-				className="w-1/5 bg-blue-500 text-white rounded-r-lg"
+				className="w-1/5 bg-blue p-2 text-white rounded-r-lg"
 				onClick={sendMessage}
 			>
 				Send

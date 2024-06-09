@@ -6,7 +6,7 @@ type Props = {
 
 const ChatWindow = (props: Props) => {
 	return (
-		<div className="h-5/6 overflow-y-scroll">
+		<div className="h-5/6 border-2 overflow-auto scrollbar-hide p-5 flex flex-col gap-5">
 			{props.messages.map((message, index) => (
 				<Message key={index} message={message} />
 			))}
