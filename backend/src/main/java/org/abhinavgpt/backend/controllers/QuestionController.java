@@ -1,12 +1,15 @@
 package org.abhinavgpt.backend.controllers;
 
 import org.abhinavgpt.backend.services.IQuestionService;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/")
+@CrossOrigin(origins = "*")
 public class QuestionController {
 
     private final IQuestionService questionService;
@@ -21,7 +24,10 @@ public class QuestionController {
     }
 
     @PostMapping("")
-    public ResponseEntity<String> helpWithDoubts(@RequestBody String question) {
-        return ResponseEntity.ok(questionService.clearDoubts(question));
+    public ResponseEntity<Map<String, String>> helpWithDoubts(@RequestBody String question) {
+        String answer = questionService.clearDoubts(question);
+        Map<String, String> response = new HashMap<>();
+        response.put("answer", answer);
+        return ResponseEntity.ok(response);
     }
 }
