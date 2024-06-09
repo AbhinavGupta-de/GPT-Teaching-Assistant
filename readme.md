@@ -55,24 +55,56 @@ frontend/
 
 - **Backend**: Implemented with Java Spring Boot. It handles communication with the GPT model and manages user queries and responses. Spring Boot was chosen for its ease of use and robustness. It provides a RESTful API for the frontend to interact with. Spring AI is used to interact with the GPT model.
 
+```
+backend/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── org/abhinavgpt/backend/
+│   │   │   │   ├── controllers/
+│   │   │   │   │   ├── QuestionController.java  // Handles HTTP requests related to DSA questions
+│   │   │   │   ├── service/
+│   │   │   │   │   ├── IQuestionService.java  // Interface defining the question service methods
+│   │   │   │   │   ├── QuestionService.java  // Implements the business logic for handling DSA questions
+│   │   │   │   ├── BackendApplication.java  // Main application class for running the Spring Boot application
+│   │   ├── resources/
+│   │   │   ├── prompts/
+│   │   │   │   ├── help_with_doubt.txt  // Text file containing sample prompts for helping with doubts
+│   │   │   ├── application.properties  // Configuration properties for the Spring Boot application
+├── pom.xml  // Maven configuration file for managing dependencies and build configurations
+├── readme.md  // Documentation file explaining the project setup and usage
+├── ... (other necessary files)
+
+```
+
 ## Usage Guidelines
 
 1. Open the frontend application in your browser.
-2. Enter the LeetCode problem URL and your specific doubt.
+2. Enter the LeetCode problem URL and your specific doubt. Even if you only add the problem URL, the assistant will give you some intutions and examples to solve the question.
 3. Interact with the GPT-based teaching assistant through the chat interface.
 
 ## GPT Integration
 
-The backend uses Spring AI to interact with the GPT model. When a user submits a query, it is sent to the GPT model, which processes the input and generates a response designed to guide the user towards a solution.
+The backend integrates with the GPT model to assist users with their DSA-related queries. Here's a detailed explanation of the integration process:
+
+1. **Template Loading**: A prompt template is stored in `help_with_doubt.txt` located in the `resources/prompts` directory. This template is injected into the service class using Spring's `@Value` annotation.
+
+2. **Chat Client Initialization**: The QuestionService class uses a ChatClient to communicate with the GPT model. This client is initialized using a builder pattern in the constructor.
+
+3. **Creating a Prompt**: When a user submits a question, the clearDoubts method is invoked. This method uses the PromptTemplate class to create a Prompt object by replacing placeholders in the template with the actual question provided by the user.
+
+4. **Generating a Response**: The generated Prompt is sent to the GPT model using the chatClient. The GPT model processes the prompt and returns a response, which is then relayed back to the user. This response focuses on guiding the user through hints and explanations without directly providing the solution.
 
 ## Prompt Design
 
-### Example Prompts
+The GPT Teaching Assistant uses a carefully crafted prompt to help users with Data Structures and Algorithms (DSA) problems. The design focuses on fostering understanding and problem-solving skills without providing direct solutions.
 
-- "Could you please explain what part of the problem is confusing you?"
-- "Have you considered how you might approach this problem using a particular data structure?"
-- "Think about how you can use a stack to solve this problem. What operations does a stack support that might be useful here?"
-- "This problem is similar to finding a needle in a haystack. Can you think of a strategy to efficiently search through the data?"
+### Key Elements:
+
+1. **User Guidance**: Users are encouraged to seek help with the approach and intuition for solving problems, not direct solutions.
+2. **Strict Instructions**: GPT is instructed not to provide solutions under any circumstances and to focus on guiding the user’s thought process.
+3. **Consistent Identity**: GPT responds as "GPT Teaching Assistant" and does not disclose other details about its nature.
+4. **Handling Irrelevant Questions**: GPT ignores offensive or irrelevant questions to maintain productive interactions.
 
 ## Contribution Guidelines
 
