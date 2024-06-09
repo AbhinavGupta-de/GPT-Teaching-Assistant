@@ -11,7 +11,8 @@ This project is a chat application that acts as a teaching assistant for data st
 1. Clone the repository: `git clone https://github.com/AbhinavGupta-de/GPT-Teaching-Assistant.git`
 2. Navigate to the frontend directory: `cd client`
 3. Install dependencies: `npm install`
-4. Run the application: `npm run dev`
+4. Create an `.env` file similar to `.env.example` add the url of your hosted backend.
+5. Run the application: `npm run dev`
 
 ### Backend
 
