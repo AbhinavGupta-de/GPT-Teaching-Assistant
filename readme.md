@@ -57,6 +57,8 @@ frontend/
 
 - **Backend**: Implemented with Java Spring Boot. It handles communication with the GPT model and manages user queries and responses. Spring Boot was chosen for its ease of use and robustness. It provides a RESTful API for the frontend to interact with. Spring AI is used to interact with the GPT model.
 
+- **Note**: I did thought of using web sockets as it is a chat application and web sockets will provide a better communication between the server and the client and the experience would be better but as it was a fairly simple application I decided to stick with the http requests. 
+
 ```
 backend/
 ├── src/
@@ -96,6 +98,8 @@ The backend integrates with the GPT model to assist users with their DSA-related
 3. **Creating a Prompt**: When a user submits a question, the clearDoubts method is invoked. This method uses the PromptTemplate class to create a Prompt object by replacing placeholders in the template with the actual question provided by the user.
 
 4. **Generating a Response**: The generated Prompt is sent to the GPT model using the chatClient. The GPT model processes the prompt and returns a response, which is then relayed back to the user. This response focuses on guiding the user through hints and explanations without directly providing the solution.
+
+**Note**: I didn't send the whole context of messages for now, but it could be done as it will generate helpful insights for the user. I wasn't able to implement this because of lack of time.
 
 ## Prompt Design
 
